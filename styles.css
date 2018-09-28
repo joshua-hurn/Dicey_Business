@@ -1,6 +1,8 @@
 #dice-container div {
-    color: fuchsia;
+    font-size: 4em;
+    color: black;
     background-color: goldenrod;
     height: 100px;
     width: 100px;
+    border: 1px solid black
 }
