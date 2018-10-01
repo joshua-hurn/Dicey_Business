@@ -1,23 +1,42 @@
+let diceArray = [];
+let container = document.createElement('div');
+document.body.appendChild(container);
+
 class Dice {
     constructor(value) {
         this.value = value;
         this.div = document.createElement('div');
         this.div.classList.add('dice');
-        document.getElementById('dice-container').appendChild(this.div);
-        document.getElementById('generateBtn').addEventListener('click', () => {
-            document.createElement('div');
-            let numGen = Math.floor((Math.random() * 6) + 1);
-            this.div.innerHTML = numGen;
+        container.appendChild(this.div);
+        let numberGenerator = Math.floor((Math.random() * 6) + 1);
+        this.div.innerHTML = numberGenerator;
+        this.div.addEventListener('click', () => {
+            this.roll();
+        });
+        this.div.addEventListener('dblclick', () => {
+            container.removeChild(this.div);
+            diceArray.splice(diceArray.indexOf(this), 1);
         })
+        this.roll();
     }
+
     roll() {
-        let numGen = Math.floor((Math.random() * 6) + 1);
-        this.div.innerHTML = numGen;
+        let numberGenerator = Math.floor((Math.random() * 6) + 1);
+        this.value = numberGenerator;
+        this.div.innerHTML = numberGenerator;
     }
 }
 
+document.getElementById('sumBtn').addEventListener('click', () => {
+    let sum = diceArray.reduce((a, b) => a + b.value, 0);
+    alert(sum);
+})
+
 document.getElementById('generateBtn').addEventListener('click', () => {
-    new Dice();
-    let numGen = Math.floor((Math.random() * 6) + 1);
-    this.div.innerHTML = numGen;
+    let newDice = new Dice();
+    diceArray.push(newDice);
+})
+
+document.getElementById('rollBtn').addEventListener('click', () => {
+    diceArray.forEach(die => die.roll());
 })

@@ -1,8 +1,15 @@
-#dice-container div {
-    font-size: 4em;
+body {
+    background-color: grey;
+}
+
+.dice {
+    display: inline-block;
+    text-align: center;
+    font-size: 5em;
     color: black;
     background-color: goldenrod;
-    height: 100px;
-    width: 100px;
-    border: 1px solid black
+    height: 120px;
+    width: 120px;
+    border: 1px solid black;
+    margin: 1em;
 }
